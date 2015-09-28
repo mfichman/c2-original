@@ -1,0 +1,65 @@
+
+
+
+vector::define!(MacroList,Macro);
+vector::define!(ImportList,ImportList);
+
+struct File {
+    macros MacroList;
+    imports ImportList;
+    exports ExportList;
+    structs StructList;
+    funcs FuncList;
+}
+
+struct Statement {
+    enum Type {
+        tblock;
+        tif;
+        twhile;
+        tfor;
+    };
+    type Type;
+    child ExprList;
+}
+
+struct Expr {
+    enum Type {
+        tbinary;
+        tcall;
+        tpostfix;
+        tident;
+        tliteral;
+    };
+    type Type;
+    value String; 
+    child ExprList;
+}
+
+make_ident(str) Expression {
+}
+
+make_binary(e1 Expression, e2 Expression) Expression {
+}
+
+make_call(e1 Expression) {
+
+}
+
+func parse_file(fd Input) File {
+}
+
+func parse_statement(fd Input) Statement {
+}
+
+func parse_expression(fd Input) Expression {
+}
+
+func parse_macro(fd Input) Macro {
+}
+
+func parse_import(fd Input) Import {
+}
+
+func parse_export(fd Input) Export {
+}

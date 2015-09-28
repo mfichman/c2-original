@@ -1,0 +1,65 @@
+
+
+import http, map, io;
+
+struct Foo {
+    bar Int;
+    baz Int;
+}
+
+struct String {
+    byte Char[];
+}
+
+macro printf!(expr Expr) {
+
+}
+
+macro define!(expr Expr) {
+    table := expr.child[0];
+    key := expr.child[1];
+    value := expr.child[2];
+    
+    return :(struct :table {
+        struct entry {
+            key :key;
+            value :value; 
+        };
+        entry entry[];
+
+        export func new() {
+        }
+    });
+}
+
+map::define!(Table,Int,String);
+vector::define!(Vector,Int);
+
+func main(arg const Char[]) Int {
+    # This function is a function and it is a function
+
+    foreach!(a, arg) {
+        io::printf!("%s\n",a);
+    }
+    for(i := 0, i < arg.length, ++i) {
+        io::printf!("%s\n",arg[i]);
+    }
+    
+    x := "foo";
+    i := string::find_char(x,'c');
+    j := string::find_str(x,"str");
+
+    res := http::get("http://foo/bar?param=3");
+
+    v := IntVector::new();
+    v::push(1);
+    v::push(2);
+    
+    t := Table::new(); 
+    x = Table::get(t,'foo');
+
+    return 0;
+}
+
+export foo;
+
