@@ -16,9 +16,9 @@ macro printf!(expr Expr) {
 }
 
 macro define!(expr Expr) {
-    table := expr.child[0];
-    key := expr.child[1];
-    value := expr.child[2];
+    var table = expr.child[0];
+    var key = expr.child[1];
+    var value = expr.child[2];
     
     return :(struct :table {
         struct entry {
@@ -35,6 +35,7 @@ macro define!(expr Expr) {
 map::define!(Table,Int,String);
 vector::define!(Vector,Int);
 
+
 func main(arg const Char[]) Int {
     # This function is a function and it is a function
 
@@ -45,17 +46,17 @@ func main(arg const Char[]) Int {
         io::printf!("%s\n",arg[i]);
     }
     
-    x := "foo";
-    i := string::find_char(x,'c');
-    j := string::find_str(x,"str");
+    var x = "foo";
+    var i = string::find_char(x,'c');
+    var j = string::find_str(x,"str");
 
-    res := http::get("http://foo/bar?param=3");
+    var res = http::get("http://foo/bar?param=3");
 
-    v := IntVector::new();
+    var v = IntVector::new();
     v::push(1);
     v::push(2);
     
-    t := Table::new(); 
+    var t = Table::new(); 
     x = Table::get(t,'foo');
 
     return 0;

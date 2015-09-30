@@ -20,8 +20,25 @@
  * IN THE SOFTWARE.
  */
 
-#include <stdlib.h>
 
-void* arena_malloc(size_t size);
-void* arena_realloc(void* data, size_t size);
-void arena_free();
+#define vector_define(N,T) \
+typedef struct N { \
+    T * element;\
+    uint32_t count;\
+    uint32_t capacity;\
+} N;\
+static inline N* N##_new() {\
+    N* self = malloc(sizeof(N));\
+    self->capacity = 32;\
+    self->count = 0;\
+    self->element = malloc(sizeof(T)*self->capacity);\
+    return self;\
+}\
+static inline void N##_push(N* self, T element) {\
+    if((self->count+1)>self->capacity) {\
+        self->capacity *= 2;\
+        self->element = realloc(self->element,sizeof(T)*self->capacity);\
+    }\
+    self->element[self->count++] = element;\
+}
+

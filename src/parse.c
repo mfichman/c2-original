@@ -20,39 +20,11 @@
  * IN THE SOFTWARE.
  */
 
-typedef enum TokenType {
-    TokenType_lparen = '(';
-    TokenType_rparen = ')';
-    TokenType_lbracket = '[';
-    TokenType_rbracket = ']';
-    TokenType_lbrace = '{';
-    TokenType_rbrace = '}';
-    TokenType_plus = '+';
-    TokenType_minus = '-';
-    TokenType_star = '*';
-    TokenType_slash = '/';
-    TokenType_backslash = '\';
-    TokenType_eq = '=';
-    TokenType_backtick = '`';
-    TokenType_caret = '^';
-    TokenType_name = 0x256;
-    TokenType_error;
-    TokenType_eof;
-};
+#include <stdlib.h>
+#include <stdio.h>
 
-typedef struct Token {
-    TokenType type;
-    char* text;   
-    uint32_t line;
-    uint32_t column;
-} Token;
+#include "vector.h"
+#include "lex.h"
+#include "parse.h"
 
-typedef struct Lexer {
-    FILE* file;
-    uint32_t line;
-    uint32_t column;
-} Lexer;
-
-Token* lex_Lexer_new(
-Token* lex_token(Lexer* self);
 
