@@ -1,0 +1,24 @@
+
+val Tree = {
+  function new(args) {
+    return Tree.extend({
+
+    })
+  }
+
+  function insert(k,v) {
+  }
+  
+  function remove(k) {
+  }
+
+}
+
+return Tree
+
+
+
+
+val x = Tree.new()
+x:insert('foo','bar')
+x:remove('foo')
