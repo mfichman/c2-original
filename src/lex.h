@@ -66,7 +66,6 @@ typedef enum lex_TokenType {
     lex_TokenType_macro,
     lex_TokenType_enum,
     lex_TokenType_var,
-    lex_TokenType_const,
     lex_TokenType_if,
     lex_TokenType_else,
 
@@ -82,11 +81,11 @@ typedef struct lex_Token {
     uint32_t column;
 } lex_Token;
 
-typedef struct lex_Lexer {
+typedef struct lex_Context {
     FILE* file;
     uint32_t line;
     uint32_t column;
-} lex_Lexer;
+} lex_Context;
 
-lex_Lexer* lex_init(FILE* file);
-lex_Token* lex_token(lex_Lexer* self);
+lex_Context* lex_init(FILE* file);
+lex_Token* lex_token(lex_Context* self);

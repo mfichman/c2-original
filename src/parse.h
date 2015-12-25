@@ -111,9 +111,9 @@ typedef struct parse_Program {
 	parse_FileList* file;
 } parse_Program;
 
-typedef struct parse_Parser {
-    lex_Lexer* lexer;
-} parse_Parser;
+typedef struct parse_Context {
+    lex_Context* lexer;
+} parse_Context;
 
 /* List type definitions */
 vector_define(parse_ExprList,parse_Expr*);
@@ -127,33 +127,33 @@ vector_define(parse_FileList,parse_File*);
 vector_define(parse_IdList,parse_Id);
 
 /* Public function API */
-parse_Parser* parse_init(lex_Lexer* lexer);
-void parse_free(parse_Parser* self);
+parse_Context* parse_init(lex_Context* lexer);
+void parse_free(parse_Context* self);
 
 /* Top-level parsing routines */
-parse_Program const* parse_program(parse_Parser* self);
-parse_File const* parse_file(parse_Parser* self);
-parse_Struct const* parse_struct(parse_Parser* self);
-parse_Attr const* parse_attr(parse_Parser* self);
-parse_Import const* parse_import(parse_Parser* self);
-parse_Ret const* parse_ret(parse_Parser* self);
-parse_Arg const* parse_arg(parse_Parser* self);
-parse_Func const* parse_func(parse_Parser* self);
-parse_Expr const* parse_expr(parse_Parser* self);
+parse_Program const* parse_program(parse_Context* self);
+parse_File const* parse_file(parse_Context* self);
+parse_Struct const* parse_struct(parse_Context* self);
+parse_Attr const* parse_attr(parse_Context* self);
+parse_Import const* parse_import(parse_Context* self);
+parse_Ret const* parse_ret(parse_Context* self);
+parse_Arg const* parse_arg(parse_Context* self);
+parse_Func const* parse_func(parse_Context* self);
+parse_Expr const* parse_expr(parse_Context* self);
 parse_Id parse_id(parse_Ret* self);
 
 /* Expression parsing */
-parse_Expr const* parse_binary(parse_Parser* self);
-parse_Expr const* parse_call(parse_Parser* self);
-parse_Expr const* parse_postfix(parse_Parser* self);
-parse_Expr const* parse_ident(parse_Parser* self);
-parse_Expr const* parse_literal(parse_Parser* self);
-parse_Expr const* parse_block(parse_Parser* self);
-parse_Expr const* parse_if(parse_Parser* self);
-parse_Expr const* parse_while(parse_Parser* self);
-parse_Expr const* parse_if(parse_Parser* self);
-parse_Expr const* parse_for(parse_Parser* self);
-parse_Expr const* parse_assign(parse_Parser* self);
-parse_Expr const* parse_reassign(parse_Parser* self);
+parse_Expr const* parse_binary(parse_Context* self);
+parse_Expr const* parse_call(parse_Context* self);
+parse_Expr const* parse_postfix(parse_Context* self);
+parse_Expr const* parse_ident(parse_Context* self);
+parse_Expr const* parse_literal(parse_Context* self);
+parse_Expr const* parse_block(parse_Context* self);
+parse_Expr const* parse_if(parse_Context* self);
+parse_Expr const* parse_while(parse_Context* self);
+parse_Expr const* parse_if(parse_Context* self);
+parse_Expr const* parse_for(parse_Context* self);
+parse_Expr const* parse_assign(parse_Context* self);
+parse_Expr const* parse_reassign(parse_Context* self);
 
 
