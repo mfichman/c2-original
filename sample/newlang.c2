@@ -1,0 +1,41 @@
+
+
+
+val game = require('game')
+val graphics = require('graphics')
+val asset = require('asset')
+val rand = require('rand')
+val types = require('types')
+val vec = require('vec')
+
+
+val EngineFlame = {
+
+ function new(id,args) {
+   return {
+     particles = graphics.Particles{
+       texture = asset.open('texture/IncandescentGold.png')
+     }
+     light = graphics.SpotLight{
+       constantAttenuation = 1
+       linearAttenuation = 0
+       quadraticAttenuation = .4
+       specularColor = vec.Color()
+       diffuseColor = vec.Color()
+       cutoff = 60
+       power = 5
+       direction = vec.Vec3(0, -.5, -.2):unit()
+     }
+     quota = args.quota or 10
+     emitter = args.emitter or types.Box()
+     index = 0
+     length = args.length or 5
+     size = args.size or 1.2
+   }
+ }
+
+ function foo() {
+ }
+}
+
+

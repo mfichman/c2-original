@@ -33,11 +33,11 @@ vector_define(IntVector,int);
 
 int main(int argc, char** argv) {
 
-	IntVector* v = IntVector_new();
-	IntVector_push(v,1);
-	IntVector_push(v,1);
-	IntVector_push(v,1);
-	IntVector_push(v,1);
+    IntVector* v = IntVector_new();
+    IntVector_push(v,1);
+    IntVector_push(v,1);
+    IntVector_push(v,1);
+    IntVector_push(v,1);
 
     return 0;
 }

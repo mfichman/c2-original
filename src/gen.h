@@ -67,17 +67,21 @@ typedef struct ir_Instr {
 	ir_Operand b;
 } ir_Instr;
 
+typedef struct ir_Block {
+   struct ir_Block* next;
+   struct ir_Block* jump;
+   ir_InstrList* instr;
+} ir_Block;
+
 typedef struct ir_Func {
-	ir_InstrList* instr;
+   ir_Block* entry;
 } ir_Func;
 
-typedef struct ir_Generator {
+typedef struct ir_Context {
 	int foo;
-} ir_Generator;
+} ir_Context;
 
-vector_define(ir_InstrList,ir_Instr);
-
-ir_Generator* ir_init(semant_Program* prog);
-ir_Func const* ir_func(ir_Generator* gen);
+ir_Context* ir_init(semant_Program* prog);
+ir_Func const* ir_func(ir_Context* self);
 
 

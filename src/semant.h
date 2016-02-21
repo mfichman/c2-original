@@ -57,17 +57,17 @@ typedef struct semant_Program {
 	semant_FileList* file;	
 } semant_Program;
 
-typedef struct semant_Analyzer {
+typedef struct semant_Context {
 	int foo;
-} semant_Analyzer;
+} semant_Context;
 
 vector_define(semant_ExprList,semant_Expr*);
 vector_define(semant_FuncList,semant_Func*);
 vector_define(semant_FileList,semant_File*);
 
-semant_Analyzer* semant_init(parse_Program* prog);
+semant_Context* semant_init(parse_Program* prog);
 
-semant_Program const* semant_program(semant_Analyzer* self);
-semant_File const* semant_file(semant_Analyzer* self);
-semant_Func const* semant_func(semant_Analyzer* self);
-semant_Expr const* semant_expr(semant_Analyzer* self);
+semant_Program const* semant_program(semant_Context* self);
+semant_File const* semant_file(semant_Context* self);
+semant_Func const* semant_func(semant_Context* self);
+semant_Expr const* semant_expr(semant_Context* self);
