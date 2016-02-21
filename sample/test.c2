@@ -35,7 +35,6 @@ macro define!(expr Expr) {
 map::define!(Table,Int,String);
 vector::define!(Vector,Int);
 
-
 func main(arg const Char[]) Int {
     # This function is a function and it is a function
 

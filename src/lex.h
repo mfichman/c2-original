@@ -52,13 +52,14 @@ typedef enum lex_TokenType {
     lex_TokenType_lshift, // <<
     lex_TokenType_rshfit, // >>
 
-    /* Identifier */
-    lex_TokenType_name,
+    /* Special tokens */
+    lex_TokenType_id,
+    lex_TokenType_character,
+    lex_TokenType_string,
+    lex_TokenType_number,
 
     /* Keywords */
     lex_TokenType_import,
-    lex_TokenType_export,
-    lex_TokenType_struct,
     lex_TokenType_func,
     lex_TokenType_const,
     lex_TokenType_for,
@@ -66,7 +67,6 @@ typedef enum lex_TokenType {
     lex_TokenType_macro,
     lex_TokenType_enum,
     lex_TokenType_var,
-    lex_TokenType_const,
     lex_TokenType_if,
     lex_TokenType_else,
 
@@ -77,16 +77,20 @@ typedef enum lex_TokenType {
 
 typedef struct lex_Token {
     lex_TokenType type;
-    char* text;   
+    char const* error;
+    char const* text;   
+    uint32_t length;
     uint32_t line;
     uint32_t column;
 } lex_Token;
 
 typedef struct lex_Lexer {
-    FILE* file;
     uint32_t line;
     uint32_t column;
+    char const* data;
+    size_t index;
+    size_t length;
 } lex_Lexer;
 
-lex_Lexer* lex_init(FILE* file);
-lex_Token* lex_token(lex_Lexer* self);
+lex_Lexer* lex_init(char const* path);
+lex_Token lex_token(lex_Lexer* self);
